@@ -20,9 +20,6 @@
     //
     function onDeviceReady() {
         document.addEventListener("pause", onPause, false);
-        alert('Intento entrar');
-        smsplugin.send('669254258','OLA K ASE? MENSAJEA O K ASE?', successCallback(result), failureCallback(error)); 
-        alert('Despues del sms');  
     }
 
     // Handle the pause event
@@ -48,6 +45,6 @@
     </script>
   </head>
   <body onload="onLoad()">
-  <div id="btnSmsIntent" href="#">call this number</div>
+  <a href="whatsapp://send?text='Mensaje'"> Hola manda sms whatsapp</a>
   </body>
 </html>
