@@ -37,7 +37,9 @@
     }
 
     $("#btnSmsIntent").click(function(){
-        smsplugin.send('669254258','OLA K ASE? MENSAJEA O K ASE?', successCallback(result), failureCallback(error));              
+        alert('Intento entrar');
+        smsplugin.send('669254258','OLA K ASE? MENSAJEA O K ASE?', successCallback(result), failureCallback(error)); 
+        alert('Despues del sms');             
     });
 
     </script>
