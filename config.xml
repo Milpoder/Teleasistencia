@@ -1,11 +1,11 @@
-<?xml version='0.1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>WatchTheKids</name>
+    <name>PruebaGPS</name>
     <description>
-        Aplicación para seguir la ruta del dispositivo reloj
+        Aplicación de presentación de Raúl Álvarez
     </description>
-    <author email="info@raul-alvarez.es" href="http://raul-alvarez.es">
-        Atlantis Team
+    <author email="support@phonegap.com" href="http://phonegap.com">
+        PhoneGap Team
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
