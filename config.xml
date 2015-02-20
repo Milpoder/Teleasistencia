@@ -1,14 +1,15 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='0.1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>PruebaGPS</name>
+    <name>Watch the kids</name>
     <description>
-        Aplicación de presentación de Raúl Álvarez
+        Aplicación para seguir la ruta del dispositivo reloj
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="info@raul-alvarez.es" href="http://raul-alvarez.es">
+        Atlantis Team
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
+    <uses-permission android:name="android.permission.SEND_SMS">
     <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -42,6 +43,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="org.apache.cordova.plugin.SmsPlugin" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />

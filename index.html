@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cordova Pause Example</title>
+    <title>Sms prueba</title>
 
-    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="smsplugin.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Call onDeviceReady when Cordova is loaded.
@@ -27,10 +28,20 @@
     function onPause() {
         alert("Hola");
     }
+    $("#btnSmsIntent").click(function(){
+        SmsPlugin.prototype.send('9731563021', 'Your Message Here!', 'INTENT'
+            function () { 
+               alert('Message sent successfully');  
+            },
+            function (e) {
+                alert('Message Failed:' + e);
+            }
+        );               
+    });
 
     </script>
   </head>
   <body onload="onLoad()">
-  <a href="tel:+34680928930">call this number</a>
+  <a id="btnSmsIntent" href="#">call this number</a>
   </body>
 </html>
