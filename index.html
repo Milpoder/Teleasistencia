@@ -4,7 +4,6 @@
     <title>Sms prueba</title>
 
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-    <script type="text/javascript" src="smsplugin.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Call onDeviceReady when Cordova is loaded.
@@ -28,15 +27,17 @@
     function onPause() {
         alert("Hola");
     }
+
+    function successCallback (result) {
+        alert("EXITO!");
+    }
+
+    function failureCallback (error) {
+        alert("ERROR");
+    }
+
     $("#btnSmsIntent").click(function(){
-        SmsPlugin.prototype.send('9731563021', 'Your Message Here!', 'INTENT'
-            function () { 
-               alert('Message sent successfully');  
-            },
-            function (e) {
-                alert('Message Failed:' + e);
-            }
-        );               
+        smsplugin.send('669254258','OLA K ASE? MENSAJEA O K ASE?', successCallback(result), failureCallback(error));              
     });
 
     </script>
