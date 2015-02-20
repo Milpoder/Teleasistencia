@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Back Button Example</title>
+    <title>Cordova Pause Example</title>
 
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // Wait for device API libraries to load
+    // Call onDeviceReady when Cordova is loaded.
+    //
+    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // When Cordova is loaded and talking with the native device,
+    // it will call the event `deviceready`.
     //
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
     }
 
-    // device APIs are available
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
-        // Register the event listener
-        document.addEventListener("backbutton", onBackKeyDown, false);
+        document.addEventListener("pause", onPause, false);
     }
 
-    // Handle the back button
+    // Handle the pause event
     //
-    function onBackKeyDown() {
-        alert('Hola');
+    function onPause() {
+        alert("Hola");
     }
 
     </script>
   </head>
   <body onload="onLoad()">
+  <a href="tel:+34680928930">call this number</a>
   </body>
 </html>
