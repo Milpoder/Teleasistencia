@@ -27,24 +27,15 @@
     // Show a custom alertDismissed
     //
     function createTable() {
-        navigator.notification.alert(
-        'Creando tabla'.$('#tablename').val(),  // message
-        insertCoord(),         // callback
-        'Resultado',            // title
-        'Siguente'                  // buttonName
-        );
+        alert("Creando Tabla");
         $.ajax({
             type: "POST",
-            url: "http://watchthekids.esy.es/create_table.php",
+            url: "https://watchthekids.esy.es/create_table.php",
             data: { tabla:  $('#tablename').val()}
             })
             .done(function( msg ) {
-                navigator.notification.alert(
-                'Creando tabla'.$('#tablename').val(),  // message
-                insertCoord(),         // callback
-                'Resultado',            // title
-                'Siguente'                  // buttonName
-                );
+                alert(msg);
+                insert_coord();
             }
         ); 
     }    
@@ -53,19 +44,15 @@
         var crd = pos.coords;
         $.ajax({
             type: "POST",
-            url: "http://watchthekids.esy.es/insert_coord.php",
+            url: "https://watchthekids.esy.es/insert_coord.php",
             data: { tabla: $('#tablename').val(), lat: crd.latitude, lng:  crd.longitude }
             })
             .done(function( msg ) {
-                navigator.notification.alert(
-                    'Tenemos primera coordenada',  // message
-                    $('#button').background('green'),         // callback
-                    'Resultado',            // title
-                    'Siguente'                  // buttonName
-                );
+                alert("Tenemos Primera Coordenada");
+                $('#button').background('green');
             }
-        });
-    };
+        );
+    }
 
     function insertCoord() {
         $('#button').background('red');
