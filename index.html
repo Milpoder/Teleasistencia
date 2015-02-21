@@ -28,7 +28,7 @@
     //
     function createTable() {
         navigator.notification.alert(
-        'Creando tabla'.$('#tablename').value(),  // message
+        'Creando tabla'.$('#tablename').val(),  // message
         insertCoord(),         // callback
         'Resultado',            // title
         'Siguente'                  // buttonName
@@ -36,11 +36,11 @@
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/create_table.php",
-            data: { tabla:  $('#tablename').value()}
+            data: { tabla:  $('#tablename').val()}
             })
             .done(function( msg ) {
                 navigator.notification.alert(
-                'Creando tabla'.$('#tablename').value(),  // message
+                'Creando tabla'.$('#tablename').val(),  // message
                 insertCoord(),         // callback
                 'Resultado',            // title
                 'Siguente'                  // buttonName
@@ -54,7 +54,7 @@
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/insert_coord.php",
-            data: { tabla: $('#tablename').value(), lat: crd.latitude, lng:  crd.longitude }
+            data: { tabla: $('#tablename').val(), lat: crd.latitude, lng:  crd.longitude }
             })
             .done(function( msg ) {
                 navigator.notification.alert(
