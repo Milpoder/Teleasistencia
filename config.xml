@@ -45,7 +45,7 @@
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     <gap:plugin name="com.teamnemitoff.phonedialer" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" />
-    <gap:plugin name="info.asankan.phonegap.smsplugin" />
+    <gap:plugin name="com.rjfun.cordova.sms" />
     <gap:plugin name="com.dileep.plugins.datepicker" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
