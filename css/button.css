@@ -38,3 +38,12 @@
 	position:relative;
 	top:1px;
 }
+
+*{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+}
+textarea
+{
+    -webkit-user-select: auto !important;
+}
