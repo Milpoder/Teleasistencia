@@ -42,14 +42,11 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
-<<<<<<< HEAD
-=======
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     <gap:plugin name="com.teamnemitoff.phonedialer" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" />
     <gap:plugin name="info.asankan.phonegap.smsplugin" />
     <gap:plugin name="com.dileep.plugins.datepicker" />
->>>>>>> 602d7f9a02d4c3910249734024fd2d7fcc55dd7e
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
