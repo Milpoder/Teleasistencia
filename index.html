@@ -9,7 +9,7 @@
 
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8">
-
+    var nonstop = true;
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -27,36 +27,39 @@
     // Show a custom alertDismissed
     //
     function createTable() {
-        alert("Creando Tabla");
         $.ajax({
             type: "POST",
-            url: "https://watchthekids.esy.es/create_table.php",
+            url: "http://watchthekids.esy.es/create_table.php",
             data: { tabla:  $('#tablename').val()}
             })
             .done(function( msg ) {
-                alert(msg);
-                insert_coord();
-            }
-        ); 
+                alert("Esperando GPS");
+                insertCoord();
+            })             
+            .fail(function(msg ) {
+            });
     }    
 
     function success(pos) {
         var crd = pos.coords;
         $.ajax({
             type: "POST",
-            url: "https://watchthekids.esy.es/insert_coord.php",
+            url: "http://watchthekids.esy.es/insert_coord.php",
             data: { tabla: $('#tablename').val(), lat: crd.latitude, lng:  crd.longitude }
             })
             .done(function( msg ) {
-                alert("Tenemos Primera Coordenada");
-                $('#button').background('green');
+                alert("envia coordenada");
             }
         );
     }
 
     function insertCoord() {
-        $('#button').background('red');
-        navigator.geolocation.getCurrentPosition(success);
+        $('#button').css('background','red');
+        idinterval = setInterval(function(){ navigator.geolocation.getCurrentPosition(success); }, 3000);
+    }
+
+    function desactivate () {
+        clearInterval(idinterval);
     }
 
     </script>
@@ -66,6 +69,7 @@
 		<form name="form1">
             <input id="tablename" type="text" />
 			<div id="button" onClick="createTable()" class="myButton">Activar</div>
+            <div id="button2" class="myButton" onclick="desactivate()">Desactivar</div>
 		</form>
 	 </center>
   </body>
