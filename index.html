@@ -27,6 +27,12 @@
     // Show a custom alertDismissed
     //
     function createTable() {
+        navigator.notification.alert(
+        'Creando tabla'.$('#tablename').value(),  // message
+        insertCoord(),         // callback
+        'Resultado',            // title
+        'Siguente'                  // buttonName
+        );
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/create_table.php",
