@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>WatchTracking</title>
+	<meta charset="utf-8"/>
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -9,28 +10,31 @@
 
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8">
-    var nonstop = true;
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
+	var $_GET = {};
+	if(document.location.toString().indexOf('?') !== -1) {
+		var query = document.location
+		               .toString()
+		               .replace(/^.*?\?/, '')
+		               .replace(/#.*$/, '')
+		               .split('&');
 
-    // device APIs are available
-    //
+		for(var i=0, l=query.length; i<l; i++) {
+		   var aux = decodeURIComponent(query[i]).split('=');
+		   $_GET[aux[0]] = aux[1];
+		}
+	}
+	var telefono = $_GET['phone'];
+	var contrasenia = $_GET['pass'];
+    document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
     }
-
-    // alert dialog dismissed
     function alertDismissed() {
-        // do something
     }
-
-    // Show a custom alertDismissed
-    //
     function createTable() {
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/create_table.php",
-            data: { tabla:  $('#tablename').val()}
+            data: { tabla:  $('#contrasenia').val()}
             })
             .done(function( msg ) {
                 alert("Esperando GPS");
@@ -39,20 +43,20 @@
             .fail(function(msg ) {
             });
     }    
-
     function onSuccess(pos) {
         var crd = pos.coords;
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/insert_coord.php",
-            data: { tabla: $('#tablename').val(), lat: crd.latitude, lng:  crd.longitude }
+            data: { tabla: $('#contrasenia').val(), lat: crd.latitude, lng:  crd.longitude }
             })
             .done(function( msg ) {
                 alert("envia coordenada");
-            }
-        );
-    }
-
+				var aleatorio = Math.floor((Math.random() *1000)); 
+				window.open("sms//:"+String(telefono)+"?body=http://watchthekids.esy.es/maps.html?pass="+String(contrasenia)+ String(aleatorio));
+            });
+	
+	}
     function GetCurrentPosition() {
         navigator.geolocation.getCurrentPosition(onSuccess);
     }
@@ -65,15 +69,17 @@
     function desactivate () {
         clearInterval(idinterval);
     }
-
     </script>
   </head>
   <body>
 	 <center>
 		<form name="form1">
-            <input id="tablename" type="text" />
-			<div id="button" onClick="createTable()" class="myButton">Activar</div>
-            <div id="button2" class="myButton" onclick="desactivate()">Desactivar</div>
+			<div  id="button" onClick="createTable()" class="myButton buttonActivar"><p>Activar</p></div>
+			<div id="button2" class="myButton buttonActivar hide" onclick="desactivate()"><p>Desactivar</p></div>
+		</form>
+
+		<form name="form2" action="configuracion.html" method="post">
+			<input id="configurationButton" type="submit" class="myButton" value="Configuración"/>
 		</form>
 	 </center>
   </body>
