@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WatchTracking</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	 <link rel="stylesheet" type="text/css" href="css/button.css"/>
+		<script>
+			function colorChange(){
+				document.getElementById("button").style.background = "green";
+				$('#button').html('Desactivar');
+			}
+		</script>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+    }
+
+    // alert dialog dismissed
+    function alertDismissed() {
+        // do something
+    }
+
+    // Show a custom alertDismissed
+    //
+    function createTable() {
+        navigator.notification.alert(
+            'Creando tabla',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+        $.ajax({
+            type: "POST",
+            url: "http://watchthekids.esy.es/create_table.php",
+            data: { tabla: "pedroesgay" }
+            })
+            .done(function( msg ) {
+            insertCoord();
+        }); 
+    }    
+
+    function insertCoord() {
+
+
+        function success(pos) {
+            var crd = pos.coords;
+            $.ajax({
+                type: "POST",
+                url: "http://watchthekids.esy.es/insert_coord.php",
+                data: { tabla: "adios1", lat: crd.latitude, lng:  crd.longitude }
+                })
+                .done(function( msg ) {
+                changeColor();
+            });
+        };
+        navigator.geolocation.getCurrentPosition(success);
+
+        navigator.notification.alert(
+            'Insertando Coordenadas',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    </script>
+  </head>
+  <body>
+	 <center>
+		<form name="form1">
+			<div id="button"onClick="createTable()" class="myButton">Activar</div>
+		</form>
+	 </center>
+  </body>
+</html>
