@@ -45,7 +45,6 @@
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     <gap:plugin name="com.teamnemitoff.phonedialer" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" />
-    <gap:plugin name="com.rjfun.cordova.sms" />
     <gap:plugin name="com.dileep.plugins.datepicker" />
     <icon src="icon.png" />
 
