@@ -65,6 +65,10 @@ body {
 	font-size: 4em;
 }
 
+#button2 {
+	font-size: 0.5em;
+}
+
 #configurationButton {
 	margin-top: 20px;
 	font-size: 1.5em;
