@@ -34,7 +34,7 @@
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/create_table.php",
-            data: { tabla:  $('#contrasenia').val()}
+            data: { tabla:  contrasenia}
             })
             .done(function( msg ) {
                 alert("Esperando GPS");
@@ -48,12 +48,12 @@
         $.ajax({
             type: "POST",
             url: "http://watchthekids.esy.es/insert_coord.php",
-            data: { tabla: $('#contrasenia').val(), lat: crd.latitude, lng:  crd.longitude }
+            data: { tabla: contrasenia, lat: crd.latitude, lng:  crd.longitude }
             })
             .done(function( msg ) {
                 alert("envia coordenada");
 				var aleatorio = Math.floor((Math.random() *1000)); 
-				location.href="sms//:"+String(telefono)+"?body=http://watchthekids.esy.es/maps.html?pass="+String(contrasenia)+ String(aleatorio);
+				//location.href="sms//:"+String(telefono)+"?body=http://watchthekids.esy.es/maps.html?pass="+String(contrasenia)+ String(aleatorio);
             });
 	
 	}
@@ -81,7 +81,7 @@
   <body>
 	 <center>
 		<form name="form1">
-			<div  id="button" onClick="createTable()" class="myButton buttonActivar"><p>Activar</p></div>
+			<div id="button" onClick="createTable()" class="myButton buttonActivar"><p>Activar</p></div>
 			<div id="button2" class="myButton buttonActivar hide" onclick="desactivate()"><p>Desactivar</p></div>
 		</form>
 
