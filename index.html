@@ -63,13 +63,14 @@
 
     function insertCoord() {
         $('#button').css('background','red');
+        $('#button2').css('background','green');
         changeButton();
         idinterval = setInterval(GetCurrentPosition, 60000);
     }
     
     function changeButton(){
-    	$('#button2').addClass("hide");
-    	$('#button').removeClass("hide");
+    	$('#button2').removeClass("hide");
+    	$('#button').addClass("hide");
     }
 
     function desactivate () {
