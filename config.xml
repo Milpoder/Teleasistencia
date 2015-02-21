@@ -48,7 +48,7 @@
     <gap:plugin name="com.rjfun.cordova.sms" />
     <gap:plugin name="com.dileep.plugins.datepicker" />
     <icon src="icon.png" />
-	<uses-permission android:name="android.permission.SEND_SMS"/>
+
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
