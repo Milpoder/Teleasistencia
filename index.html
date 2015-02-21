@@ -53,7 +53,7 @@
             .done(function( msg ) {
                 alert("envia coordenada");
 				var aleatorio = Math.floor((Math.random() *1000)); 
-				window.open("sms//:"+String(telefono)+"?body=http://watchthekids.esy.es/maps.html?pass="+String(contrasenia)+ String(aleatorio));
+				location.href="sms//:"+String(telefono)+"?body=http://watchthekids.esy.es/maps.html?pass="+String(contrasenia)+ String(aleatorio);
             });
 	
 	}
