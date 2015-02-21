@@ -40,7 +40,7 @@
             });
     }    
 
-    function success(pos) {
+    function onSuccess(pos) {
         var crd = pos.coords;
         $.ajax({
             type: "POST",
@@ -53,9 +53,16 @@
         );
     }
 
+    function GetCurrentPosition() {
+    // retrieve your info here
+        console.log('i = ' + z i);
+        i = i + 1;
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+
     function insertCoord() {
         $('#button').css('background','red');
-        idinterval = setInterval(function(){ navigator.geolocation.getCurrentPosition(success); }, 3000);
+        idinterval = setInterval(GetCurrentPosition, 3000);
     }
 
     function desactivate () {
