@@ -10,6 +10,7 @@
 
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8">
+	var activada = false;
 	var $_GET = {};
 	if(document.location.toString().indexOf('?') !== -1) {
 		var query = document.location
@@ -62,19 +63,28 @@
     }
 
     function insertCoord() {
-        $('#button').css('background','red');
-        $('#button2').css('background','green');
         changeButton();
         idinterval = setInterval(GetCurrentPosition, 60000);
     }
     
     function changeButton(){
-    	$('#button2').removeClass("hide");
-    	$('#button').addClass("hide");
+		if(activada){
+    		$('#button').removeClass("hide");
+			$('#configurationButton').removeClass("hide");
+    		$('#button2').addClass("hide");
+			activada = false;
+		}
+		else{
+			$('#button2').removeClass("hide");
+			$('#configurationButton').addClass("hide");
+    		$('#button').addClass("hide")
+			activada = true;
+		}
     }
 
     function desactivate () {
         clearInterval(idinterval);
+		  changeButton();
     }
     </script>
   </head>
@@ -82,7 +92,7 @@
 	 <center>
 		<form name="form1">
 			<div id="button" onClick="createTable()" class="myButton buttonActivar"><p>Activar</p></div>
-			<div id="button2" class="myButton buttonActivar hide" onclick="desactivate()"><p>Desactivar</p></div>
+			<div id="button2" class="myButton2 buttonActivar hide" onclick="desactivate()"><p>Desactivar</p></div>
 		</form>
 
 		<form name="form2" action="configuracion.html" method="post">
