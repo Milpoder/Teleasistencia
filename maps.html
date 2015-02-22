@@ -27,13 +27,8 @@
 		}
 	}    
 
-	$(document).ready(function() {
-		    if (typeof navigator.geolocation == "undefined") {
-		      $("#error").text("Your browser doesn't support the Geolocation API");
-		      return;
-		    }
-	 
-		    navigator.geolocation.watchPosition(function(position) {
+
+		    function PintarMapa() {
 		    	ReadTable();
 	 
 			    var myOptions = {
@@ -52,6 +47,7 @@
 		          	title: "Point " + (i + 1)
 		        	});
 		      	}
+
 		      	var polyline = new google.maps.Polyline({
 		        	map: map,
 		        	path: coor,
@@ -59,16 +55,15 @@
 		        	strokeOpacity: 0.7,
 		        	strokeWeight: 1
 		      	});
-		      	map.fitBounds(latLngBounds);
-		    	},
-		    	function(positionError){
-		      		$("#error").append("Error: " + positionError.message + "<br />");
-		    	},
-		    	{
-		      	enableHighAccuracy: true,
-		      	timeout: 10 *1000 // 10 seconds
+
+		      	map.fitBounds(latLngBounds,	function(positionError){
+		      		$("#error").append("Error: " + positionError.message + "<br />");},
+				{
+			      	enableHighAccuracy: true,
+			      	timeout: 10 *1000 // 10 seconds
 		    	});
-			});
+				$('#button').html("Actualizar");
+			}
     </script>
 	<style type="text/css">
       #map {
@@ -80,11 +75,9 @@
   </head>
   <body>
 	 <center>
-		<form name="form1">
             <input id="tablename" type="text" />
-			<div id="button" onClick="ReadTable()" class="myButton">Activar</div>
+			<div id="button" onClick="PintarMapa()" class="myButton">Activar</div>
 			<div id="map"></div>
-		</form>
 	 </center>
   </body>
 </html>
